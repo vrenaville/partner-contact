@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="partner_activity_report_sale.report_partner_activity_sale"
+        	inherit_id="partner_activity_report_base.report_partner_activity_def" >
+				      <xpath expr="//p[contains(@t-if, 'option_selected.partner_address_information')]" position="after">
+                        <p t-if="option_selected.partner_sales_order">
+                            <h2>
+                                <span>Partner Sales Order</span>
+                            </h2>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Salesman</th>
+                                        <th>Date</th>
+                                        <th>Amount</th>
+                                        <th>State</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="invoice_tbody">
+                                    <tr
+                                        t-if="len(partner.get_partner_sales_informations()) > 0"
+                                        t-foreach="partner.get_partner_sales_informations()"
+                                        t-as="s">
+                                        <td>
+                                            <span t-field="s.name" />
+                                        </td>
+                                        <td>
+                                            <span t-field="s.user_id.name" />
+                                        </td>
+                                        <td>
+                                            <span t-field="s.date_order" />
+                                        </td>
+                                        <td>
+                                            <span t-field="s.amount_total" />
+                                        </td>
+                                        <td>
+                                            <span t-field="s.state" />
+                                        </td>
+                                    </tr>
+                                    <tr
+                                        t-if="len(partner.get_partner_sales_informations()) == 0">
+                                        <td colspan="5">
+                                            <span>No records</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </p>
+				      </xpath>
+
+        </template>
+    </data>
+</openerp>

@@ -1,0 +1,18 @@
+<openerp>
+  <data>
+
+
+    <record id="partner_print_activity_sale_form" model="ir.ui.view">
+      <field name="name">partner.print.activity.sale.form</field>
+      <field name="model">partner.print.activity</field>
+      <field name="inherit_id" ref="partner_activity_report_base.partner_print_activity_form"/>
+      <field name="arch" type="xml">
+        <field name="partner_address_information" position="after" >
+	        <field name="partner_sales_order" />
+        </field>
+
+      </field>
+    </record>
+
+  </data>
+</openerp>
